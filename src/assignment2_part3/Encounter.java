@@ -10,12 +10,14 @@ package assignment2_part3;
  * @author dhankuwarsisodiya
  */
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
  * @author adicyborg
  */
-public class Encounter extends VitalSigns{
+public class Encounter extends VitalSigns implements Comparator<Encounter>{
   
   public int encounterId;
   public LocalDate encounterDate;  
@@ -44,7 +46,10 @@ public class Encounter extends VitalSigns{
         this.encounterDate = encounterDate;
     }
 
-  
+  @Override
+    public int compare(Encounter o1, Encounter o2) {
+        return o1.getEncounterDate().compareTo(o2.getEncounterDate());
+    }
 
 
 }

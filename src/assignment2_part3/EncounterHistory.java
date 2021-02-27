@@ -11,12 +11,14 @@ package assignment2_part3;
  */
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
  * @author adicyborg
  */
-public class EncounterHistory extends Encounter{
+public class EncounterHistory extends Encounter implements Comparator<Encounter>{
   
     private static ArrayList<Encounter> encounterHistory = new ArrayList<Encounter>();
 
@@ -58,5 +60,10 @@ public class EncounterHistory extends Encounter{
         int id = this.encounterHistory.size()+1;
        e.setEncounterId(id);
        encounterHistory.add(e);
+    }
+
+    @Override
+    public int compare(Encounter o1, Encounter o2) {
+        return o1.getEncounterDate().compareTo(o2.getEncounterDate());
     }
 }

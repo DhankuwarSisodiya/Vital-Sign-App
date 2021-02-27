@@ -17,12 +17,13 @@ import java.util.ArrayList;
  *
  * @author adicyborg
  */
-public class Person {
+public class Person{
 
 //    public int personId;
     public String name;
     public int age;
     private LocalDate dob;
+    House house;
     
     public Person(int personId, String name, int age, LocalDate dob) {
         //this.personId = personId;
@@ -63,4 +64,27 @@ public class Person {
         this.setAge(dob);
         this.dob = dob;
     }   
+    
+    public void setHouse(int houseId, String address, int communityId, String city){
+        house = new House();
+        house.setHouseId(houseId);
+        house.setAddressLine(address);
+        house.setCommunityDetails(communityId, city);
+    }   
+    
+    public int getHouseID(){
+        return house.getHouseId();
+    }
+    
+    public String getAddressLine(){
+        return house.getAddressLine();
+    }
+    
+    public int getCommunity(){
+        return house.getcommunity();
+    }
+    
+    public String getCity(){
+        return house.getcity();
+    }
 }

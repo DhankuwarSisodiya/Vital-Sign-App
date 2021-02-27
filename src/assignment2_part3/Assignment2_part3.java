@@ -33,6 +33,7 @@ public class Assignment2_part3 {
             System.out.println("2. View all patients");
             System.out.println("3. Add vital Signs");
             System.out.println("4. View vital sign history");
+            System.out.println("5. View community statistics");
             System.out.println("Enter your choice");
        
             Scanner scanner2 = new Scanner(System.in);
@@ -51,7 +52,10 @@ public class Assignment2_part3 {
                 
                 case 4: displayRecords(pd, eh);
                 break;
-                    
+                
+                case 5: viewCommunityStats(pd, eh);
+                break;
+                        
                 default : System.out.println("You have entered an invalid choice");
                 break;
 
@@ -75,7 +79,24 @@ public class Assignment2_part3 {
         LocalDate date = LocalDate.parse(dateString, formatter);
         p.setDob(date);
         
+        System.out.println("3. Enter house No.");
+        int houseId = scanner.nextInt();
+        
+        System.out.println("4. Enter pincode for community.");
+        int communityID = scanner.nextInt();
+        
+//        System.out.println("4. Enter house address.");
+        String address = "Address line";
+        
+        
+        
+        System.out.println("5. Enter city");
+        String city = scanner.next();
+        
+        p.setHouse(houseId, address, communityID, city);
+        
         pd.add(p);
+        scanner.nextLine();
         System.out.println("Patient with patient id "+ p.getPatientId() +" created");
     }
     
@@ -85,6 +106,10 @@ public class Assignment2_part3 {
             System.out.println("Name:" + pd.getPatientDirectory().get(i).getName());
             System.out.println("Date of Birth:" + pd.getPatientDirectory().get(i).getDob());
             System.out.println("Age:" + pd.getPatientDirectory().get(i).getAge() + " months");
+            System.out.println("House No:" + pd.getPatientDirectory().get(i).getHouseID());
+            //System.out.println("Address:" + pd.getPatientDirectory().get(i).getAddressLine());
+            System.out.println("Community:" + pd.getPatientDirectory().get(i).getCommunity());
+            System.out.println("City:" + pd.getPatientDirectory().get(i).getCity());
             System.out.println("---------------------------------------------------------------");
         }
     }
@@ -181,6 +206,19 @@ public class Assignment2_part3 {
                     j++;
                 }
             }          
+        }
+    }
+
+    private static void viewCommunityStats(PatientDirectory patients, EncounterHistory vitalSignHistory) {
+        Scanner scanner = new Scanner(System.in);
+       
+        for(Patient p : patients.getPatientDirectory()){
+            for(int i =0 ; i<vitalSignHistory.getEncounterHistory().size();i++){
+                if(p.patientId == vitalSignHistory.getEncounterHistory().get(i).getPatientId()){    
+                    //vitalSignHistory.getEncounterHistory().get(i).checkForAbnormalBP(p);
+                    System.out.println(vitalSignHistory.getEncounterHistory().get(i).getEncounterDate());
+                }
+            }  
         }
     }
 }

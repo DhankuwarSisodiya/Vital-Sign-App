@@ -84,5 +84,5 @@ public class Patient extends Person{
     public void setEncounterHistoryId(int encounterHistoryId) {
         this.encounterHistoryId = encounterHistoryId;
     }
-
+    
 }

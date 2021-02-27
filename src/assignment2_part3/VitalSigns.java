@@ -138,4 +138,41 @@ public class VitalSigns {
         }
         return false;
     }
+    
+    public boolean checkForAbnormalBP(Patient p, VitalSigns v){
+        boolean isAbnormal = false;
+        
+        if(p.getAge() < 1){
+            System.out.println(p.getName()+" is a newborn");
+            if(checkLimits(50,70,v.getBloodPressure())){
+                isAbnormal = true;
+            }
+        } else if(p.getAge() < 12 && p.getAge() > 0){
+            System.out.println(p.getName()+" is an infant");
+            if(checkLimits(70,100,v.getBloodPressure())){
+                isAbnormal = true;
+            }
+        } else if(p.getAge() < 36 && p.getAge() > 12){
+            System.out.println(p.getName()+" is a toddler");
+            if(checkLimits(80,110,v.getBloodPressure())){
+                isAbnormal = true;
+            }
+        } else if(p.getAge() < 60 && p.getAge() > 35){
+            System.out.println(p.getName()+" is a preschooler");
+            if(checkLimits(80,110,v.getBloodPressure())){
+                isAbnormal = true;
+            }
+        } else if(p.getAge() < 144 && p.getAge() > 60){
+            System.out.println(p.getName()+" is of school age");
+            if(checkLimits(80,120,v.getBloodPressure())){
+                isAbnormal = true;
+            }
+        } else if(p.getAge() > 144){
+            System.out.println(p.getName()+" is an adolescent");
+            if(checkLimits(110,120,v.getBloodPressure())){
+                isAbnormal = true;
+            }
+        }
+        return isAbnormal;
+    }
 }
